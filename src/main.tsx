@@ -8,10 +8,13 @@ import './styles.css'
 const root = document.getElementById('root')
 if (!root) throw new Error('Root element missing')
 
+const baseUrl = import.meta.env.BASE_URL
+const basename = baseUrl === '/' ? undefined : baseUrl.replace(/\/$/, '')
+
 createRoot(root).render(
   <StrictMode>
     <ProgressProvider>
-      <BrowserRouter>
+      <BrowserRouter basename={basename}>
         <Routes>
           <Route path="/" element={<App />} />
         </Routes>
